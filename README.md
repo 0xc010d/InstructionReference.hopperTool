@@ -1,20 +1,21 @@
-HopperRef
+InstructionReference.hopperTool
 ======
-Hopper Full Instruction Reference Plugin.
+Hopper Instruction Reference Tool Plugin.
 
-Shamelessly ported from the excellent [IdaRef plugin by nologic](https://github.com/nologic/idaref).
+Shamelessly ported from the excellent [HopperRef plugin by zbuc](https://github.com/zbuc/hopperref).
 
-![](./screenshot/hopperref.png)
+Installation
+------------
+Simply checkout or download the repository and use cmake/make to install it.
+Please also note that you need Xcode's developer tools and sqlite3 to be available.
 
-Usage
------
-Simply checkout or download the repository and install it to your Hopper plugins directory:
+    git clone https://github.com/0xc010d/InstructionReference.hopperTool.git
+    cd InstructionReference.hopperTool
+    git submodule init && git submodule update
+    mkdir build && cd build
+    cmake .. && make install
 
-    Show Instruction Reference.py -> ~/Library/Application Support/Hopper/Scripts/Show Instruction Reference.py
-    arm.sql -> ~/Library/Application Support/Hopper/Scripts/arm.sql
-    x86-64.sql -> ~/Library/Application Support/Hopper/Scripts/x86-64.sql
-
-You should see a "Show Instruction Reference" option in the Scripts menu after installation.
+Restart Hopper Disassembler and you should see a "Show Current Instruction Reference" option in the "Tool Plugins" menu item.
 
 *Now for plagiarized documentation from nologic because he did all the hard work*
 
@@ -39,7 +40,7 @@ columns and place it in the the script directory.
     con.commit()
     
 When working with x86, I noticed that many instructions point to the same documentation.
-So, the plugin supports single level referencing. Just place '-R:[new instruction]' into
+So, the plugin supports level referencing. Just place '-R:[new instruction]' into
 description to redirect the loading. 'new instruction' is the target. So, when loading 
 the script will detect the link and load the new target automatically.
 
